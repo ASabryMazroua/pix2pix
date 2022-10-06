@@ -7,8 +7,8 @@ import matplotlib.pyplot as plt
 from PIL import Image
 from support_functions import relabel, predict_image, master_plot, validate_segmentation
 
-model = tf.keras.models.load_model('saved_model/generator.h5')
-path = os.path.join(os.getcwd(), r"dataset\annotations")
+model = tf.keras.models.load_model(r'saved_model/generator.h5')
+path = os.path.join(os.getcwd(), r"dataset/annotations")
 all_files = os.listdir(path)
 
 
@@ -16,11 +16,11 @@ all_files = os.listdir(path)
 def random_test():
     # Getting an image for testing the model
     photo_index = np.random.choice(len(all_files))
-    test_label = os.path.join(os.getcwd(), r"dataset\annotations", all_files[photo_index])
+    test_label = os.path.join(os.getcwd(), r"dataset/annotations", all_files[photo_index])
     original_segmented_image = loadmat(test_label)["groundtruth"].astype(float)
     original_segmented_image = np.array(Image.fromarray(original_segmented_image.astype(np.uint8)).convert('RGB')).astype('int') 
     original_segmented_image = relabel(original_segmented_image)
-    test_image = os.path.join(os.getcwd(), r"dataset\photos", all_files[photo_index].replace("mat", "jpg"))
+    test_image = os.path.join(os.getcwd(), r"dataset/photos", all_files[photo_index].replace("mat", "jpg"))
     original_image = plt.imread(test_image)
     # original_segmented_image = ((imgs_B[0]+1.0)*127.5).astype(int)
     predicted_segmented_image = predict_image(original_image, model=model)
