@@ -8,7 +8,7 @@ from keras.layers import BatchNormalization, Activation, ZeroPadding2D, LeakyReL
 # from keras.layers.advanced_activations import LeakyReLU
 from keras.layers.convolutional import UpSampling2D, Conv2D
 from keras.models import Sequential, Model
-from keras.optimizers import Adam
+from tensorflow.keras.optimizers import Adam
 import datetime
 import matplotlib.pyplot as plt
 import sys
