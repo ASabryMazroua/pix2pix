@@ -37,7 +37,7 @@ class Pix2Pix():
         self.gf = 64
         self.df = 64
 
-        optimizer = Adam(0.0002, 0.5)
+        optimizer = Adam(0.0002, 0.85)
 
         # Build and compile the discriminator
         self.discriminator = self.build_discriminator()
