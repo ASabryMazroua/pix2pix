@@ -8,7 +8,7 @@ from PIL import Image
 from support_functions import relabel, predict_image, master_plot, validate_segmentation
 
 
-model = tf.keras.models.load_model('saved_model\generator.h5')
+model = tf.keras.models.load_model('saved_model/generator.h5')
 path = os.path.join(os.getcwd(), "dataset/annotations")
 all_files = os.listdir(path)
 

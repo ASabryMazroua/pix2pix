@@ -17,11 +17,13 @@ import numpy as np
 import os
 
 class Pix2Pix():
-    def __init__(self):
+    def __init__(self, learning_rate=0.0001, beta1=0.89):
         # Input shape
         self.img_rows = 512
         self.img_cols = 512 
         self.channels = 3
+        self.learning_rate = learning_rate
+        self.beta1 = beta1
         self.img_shape = (self.img_rows, self.img_cols, self.channels)
 
         # Configure data loader
@@ -37,7 +39,7 @@ class Pix2Pix():
         self.gf = 64
         self.df = 64
 
-        optimizer = Adam(0.0002, 0.85)
+        optimizer = Adam(self.learning_rate,self.beta1)
 
         # Build and compile the discriminator
         self.discriminator = self.build_discriminator()
